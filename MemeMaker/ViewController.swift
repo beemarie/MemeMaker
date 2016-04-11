@@ -16,7 +16,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         imagePicker = UIImagePickerController()
         imagePicker!.delegate = self
-//        UIImagePickerControllerDelegate
         // Do any additional setup after loading the view, typically from a nib.
     }
 
