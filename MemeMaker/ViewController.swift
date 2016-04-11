@@ -30,6 +30,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         theImage.image = image
+        
+        //after selecting image dismiss the view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
 
