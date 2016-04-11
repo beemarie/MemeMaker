@@ -8,10 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var imagePicker: UIImagePickerController?
+    @IBOutlet weak var theImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker = UIImagePickerController()
+        imagePicker!.delegate = self
+//        UIImagePickerControllerDelegate
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -20,6 +25,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func selectImage(sender: AnyObject) {
+        presentViewController(imagePicker!, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        print("made it here")
+        theImage.image = image
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
 
