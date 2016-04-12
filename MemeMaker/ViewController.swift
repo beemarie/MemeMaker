@@ -14,8 +14,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var theImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagePicker = UIImagePickerController()
-        imagePicker!.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,6 +23,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func selectImage(sender: AnyObject) {
+        imagePicker = UIImagePickerController()
+        imagePicker!.delegate = self
         presentViewController(imagePicker!, animated: true, completion: nil)
     }
     
