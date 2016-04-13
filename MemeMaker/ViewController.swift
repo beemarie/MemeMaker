@@ -64,40 +64,46 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //subscribe to keyboard notifications whent he bottom text field is editing
     @IBAction func bottomTextFieldEditing(sender: AnyObject) {
         self.subscribeToKeyboardNotifications()
         
     }
     
+    //unsubscribe from keyboard notifications when the bottom textfield is not editing
     @IBAction func bottomTextFieldEditingEnd(sender: AnyObject) {
         self.unsubscribeToKeyboardNotifications()
     }
 
+    //before keyboard shows move the view frame up by height of keyboard
     func keyboardWillShow(notification:NSNotification) {
         self.view.frame.origin.y -= getKeyboardHeight(notification)
     }
-    
+
+    //before keyboard hides move the view frame down by height of keyboard
     func keyboardWillHide(notification:NSNotification) {
         self.view.frame.origin.y += getKeyboardHeight(notification)
     }
     
-    
+    //returns keyboard height
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo!
         let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.CGRectValue().height
     }
 
+    //subscribe to the show & hide keyboard notifications
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
 
     }
+    
+    //unsubscribe from show & hide keyboard notifications
     func unsubscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
 
-//        NSNotificationCenter.defaultCenter().remove(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     }
 
 }
