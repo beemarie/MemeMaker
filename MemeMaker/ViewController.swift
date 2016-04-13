@@ -24,10 +24,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSForegroundColorAttributeName: UIColor.whiteColor(),
         NSStrokeWidthAttributeName: -1.0,
     ]
-    
 
     var imagePicker: UIImagePickerController?
     @IBOutlet weak var theImage: UIImageView!
+    
+    //struct representing Meme object
+//    struct Meme {
+//        image: theImage.image,
+//        
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topTextField.delegate = topTextFieldDelegate
@@ -69,11 +75,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.subscribeToKeyboardNotifications()
         
     }
-    
-    //unsubscribe from keyboard notifications when the bottom textfield is not editing
-    @IBAction func bottomTextFieldEditingEnd(sender: AnyObject) {
-        self.unsubscribeToKeyboardNotifications()
-    }
 
     //before keyboard shows move the view frame up by height of keyboard
     func keyboardWillShow(notification:NSNotification) {
@@ -83,6 +84,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //before keyboard hides move the view frame down by height of keyboard
     func keyboardWillHide(notification:NSNotification) {
         self.view.frame.origin.y += getKeyboardHeight(notification)
+        unsubscribeFromKeyboardNotifications()
+
     }
     
     //returns keyboard height
@@ -100,7 +103,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     //unsubscribe from show & hide keyboard notifications
-    func unsubscribeToKeyboardNotifications() {
+    func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
 
