@@ -34,8 +34,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.bottomTextField.delegate = self
         bottomTextField.defaultTextAttributes = textAttributes
         bottomTextField.textAlignment = NSTextAlignment.Center
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
         topIsEdited = false
         bottomIsEdited = false
         // Do any additional setup after loading the view, typically from a nib.
@@ -54,7 +52,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         theImage.image = image
-        
+        topTextField.text = "TOP"
+        topTextField.hidden = false
+        bottomTextField.text = "BOTTOM"
+        bottomTextField.hidden = false
         //after selecting image dismiss the view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
