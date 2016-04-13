@@ -36,6 +36,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <action selector="bottomTextFieldEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="TlY-aj-VPl"/>
+                                    <action selector="bottomTextFieldEditingEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="TSo-jJ-Ns3"/>
+                                </connections>
                             </textField>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zng-nY-PfT">
                                 <rect key="frame" x="0.0" y="65" width="600" height="36"/>
