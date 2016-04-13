@@ -16,6 +16,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var bottomIsEdited:Bool?
     let topTextFieldDelegate = textFieldDelegate()
     let bottomTextFieldDelegate = textFieldDelegate()
+    var theMeme:Meme?
+    @IBOutlet weak var theToolbar: UIToolbar!
     
     //dictionary of text attributes
     let textAttributes = [
@@ -28,11 +30,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var imagePicker: UIImagePickerController?
     @IBOutlet weak var theImage: UIImageView!
     
-    //struct representing Meme object
-//    struct Meme {
-//        image: theImage.image,
-//        
-//    }
+    
+    struct Meme {
+        var image: UIImage
+        var topText: String
+        var bottomText: String
+        var memedImage: UIImage
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +46,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.bottomTextField.delegate = bottomTextFieldDelegate
         self.bottomTextField.defaultTextAttributes = textAttributes
         self.bottomTextField.textAlignment = NSTextAlignment.Center
-
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -108,6 +111,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
 
     }
+    
+    @IBAction func saveMeme(sender: UIBarButtonItem) {
+        let memedImage = generateMemedImage()
+        let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        self.presentViewController(activityController, animated: true, completion: nil)
+        theMeme = Meme(image: theImage.image!, topText: topTextField.text!, bottomText: bottomTextField.text!, memedImage: memedImage)
+    }
 
+    func generateMemedImage() -> UIImage
+    {
+        self.theToolbar.hidden = true
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame,
+            afterScreenUpdates: true)
+        let memedImage : UIImage =
+        UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.theToolbar.hidden = false
+        return memedImage
+    }
+    
 }
 

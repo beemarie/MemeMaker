@@ -28,9 +28,14 @@
                                             <action selector="selectImage:" destination="BYZ-38-t0r" id="Hqo-Vl-Kc7"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Save" id="9iX-y2-9ED">
+                                        <connections>
+                                            <action selector="saveMeme:" destination="BYZ-38-t0r" id="Oc2-wf-qVg"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uhq-MF-bJb">
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uhq-MF-bJb">
                                 <rect key="frame" x="0.0" y="481" width="600" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,6 +73,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="Uhq-MF-bJb" id="dfj-Hi-szU"/>
                         <outlet property="theImage" destination="9xR-Az-qDz" id="Xi7-Vu-Vzk"/>
+                        <outlet property="theToolbar" destination="0fE-VB-5xl" id="04p-Jl-lJb"/>
                         <outlet property="topTextField" destination="Zng-nY-PfT" id="QU9-0C-E9O"/>
                     </connections>
                 </viewController>
