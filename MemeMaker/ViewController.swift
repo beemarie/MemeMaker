@@ -30,13 +30,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set delegates, text attributes, and alignment for meme text fields
         self.topTextField.delegate = topTextFieldDelegate
         self.topTextField.defaultTextAttributes = textAttributes
         self.topTextField.textAlignment = NSTextAlignment.Center
         self.bottomTextField.delegate = bottomTextFieldDelegate
         self.bottomTextField.defaultTextAttributes = textAttributes
         self.bottomTextField.textAlignment = NSTextAlignment.Center
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,6 +109,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
     
+    //function for saving the meme, calls generate memedImage & then sets as a meme struct
     @IBAction func saveMeme(sender: UIBarButtonItem) {
         let memedImage = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
@@ -117,6 +119,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         appDelegate.memes.append(theMeme!)
     }
 
+    //draw memed image based on image on screen
     func generateMemedImage() -> UIImage
     {
         self.theToolbar.hidden = true
