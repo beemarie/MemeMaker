@@ -29,12 +29,14 @@ class MemeTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let theCell = tableView.dequeueReusableCellWithIdentifier("MemeCell")
-        theCell?.textLabel!.text = memes![indexPath.row].topText
+        theCell?.textLabel!.text = memes![indexPath.row].topText + memes![indexPath.row].bottomText
         theCell?.imageView?.image = memes![indexPath.row].image
         return theCell!
     }
     
-    
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destViewController = segue.destinationViewController as! ViewController
+        destViewController.hidesBottomBarWhenPushed = true
+    }
     
 }
