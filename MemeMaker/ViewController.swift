@@ -16,7 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var bottomIsEdited:Bool?
     let topTextFieldDelegate = textFieldDelegate()
     let bottomTextFieldDelegate = textFieldDelegate()
-    var theMeme:Meme?
+    var theMeme:AppDelegate.Meme?
     @IBOutlet weak var theToolbar: UIToolbar!
     
     //dictionary of text attributes
@@ -31,13 +31,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var theImage: UIImageView!
     
     
-    struct Meme {
-        var image: UIImage
-        var topText: String
-        var bottomText: String
-        var memedImage: UIImage
-    }
-    
+//    struct Meme {
+//        var image: UIImage
+//        var topText: String
+//        var bottomText: String
+//        var memedImage: UIImage
+//    }
+//    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topTextField.delegate = topTextFieldDelegate
@@ -78,6 +78,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.subscribeToKeyboardNotifications()
         
     }
+    
+    @IBAction func dismissPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     //before keyboard shows move the view frame up by height of keyboard
     func keyboardWillShow(notification:NSNotification) {
@@ -116,7 +120,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         self.presentViewController(activityController, animated: true, completion: nil)
-        theMeme = Meme(image: theImage.image!, topText: topTextField.text!, bottomText: bottomTextField.text!, memedImage: memedImage)
+        theMeme = AppDelegate.Meme(image: theImage.image!, topText: topTextField.text!, bottomText: bottomTextField.text!, memedImage: memedImage)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.memes.append(theMeme!)
     }
 
     func generateMemedImage() -> UIImage
