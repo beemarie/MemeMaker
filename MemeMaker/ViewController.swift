@@ -12,8 +12,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    var topIsEdited:Bool?
-    var bottomIsEdited:Bool?
     let topTextFieldDelegate = textFieldDelegate()
     let bottomTextFieldDelegate = textFieldDelegate()
     var theMeme:AppDelegate.Meme?
@@ -30,14 +28,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var imagePicker: UIImagePickerController?
     @IBOutlet weak var theImage: UIImageView!
     
-    
-//    struct Meme {
-//        var image: UIImage
-//        var topText: String
-//        var bottomText: String
-//        var memedImage: UIImage
-//    }
-//    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topTextField.delegate = topTextFieldDelegate
@@ -58,6 +48,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker = UIImagePickerController()
         imagePicker!.delegate = self
         presentViewController(imagePicker!, animated: true, completion: nil)
+        self.topTextFieldDelegate.hasBeenEdited = false
+        self.bottomTextFieldDelegate.hasBeenEdited = false
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {

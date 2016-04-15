@@ -110,11 +110,11 @@
 				7F6DE0DB1CBC507100522293 /* Main.storyboard */,
 				7F72648A1CC07ADB00E08DD0 /* MemeCell.swift */,
 				7F7264881CC078F800E08DD0 /* MemeCollectionViewController.swift */,
+				7F7264861CC072E100E08DD0 /* MemeTableViewController.swift */,
+				7F4B1CC31CBEA59C009EA394 /* textFieldDelegate.swift */,
 				7F6DE0DE1CBC507100522293 /* Assets.xcassets */,
 				7F6DE0E01CBC507100522293 /* LaunchScreen.storyboard */,
 				7F6DE0E31CBC507100522293 /* Info.plist */,
-				7F4B1CC31CBEA59C009EA394 /* textFieldDelegate.swift */,
-				7F7264861CC072E100E08DD0 /* MemeTableViewController.swift */,
 			);
 			path = MemeMaker;
 			sourceTree = "<group>";
